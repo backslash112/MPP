@@ -1,0 +1,5 @@
+Answer: When you change a property of an instance, then all the references will be change.
+
+Fix it: 
+Remove the line of code in the removeDuplicates() method:
+tracker.get(e).setVisited(true);

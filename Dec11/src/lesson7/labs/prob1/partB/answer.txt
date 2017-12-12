@@ -1,0 +1,7 @@
+Answer: When you want to override the equals() method, you must use the keyword "@Override".
+
+Fix it: 
+Change: 
+public boolean equals(Employee e) {}
+to:
+@Override public boolean equals(Object o) {}

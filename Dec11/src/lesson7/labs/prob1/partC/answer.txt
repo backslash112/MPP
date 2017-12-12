@@ -1,0 +1,8 @@
+Answer: When you want to use the HashMap.containsKey() method to check if the given item is contained by the map, 
+after you override the equals() method, you also need to override the hashCode() method.
+
+Fix it: 
+@Override public int hashCode() {
+	int nameHashCode = name.hashCode();
+	return nameHashCode * salary;
+}
