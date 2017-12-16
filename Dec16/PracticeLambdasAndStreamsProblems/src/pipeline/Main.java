@@ -25,19 +25,19 @@ public class Main {
 							        .filter(e -> e.getYearOfBirth() > 1970)
 							        .collect(Collectors.toList());
 		System.out.println(result);
-				
+
 		prob1();
 		prob2();
 		prob3();
 	}
-	
+
 	//Create a stream pipeline that obtains a list of
 	//all name/salary pairs extracted from a list of Employees
 	//for which salary > 55000 and less than 120000, in ascending
 	//order of name, then descending order of salary
 	//Then print the list to the console
 	public static void prob1() {
-		//use this list 
+		//use this list
 		List<Employee> list = EmployeeTestData.getList();
 		List<Pair> result = list.stream()
 									.filter(e -> e.getSalary() > 55000 && e.getSalary() < 120000)
@@ -47,12 +47,12 @@ public class Main {
 									.collect(Collectors.toList());
 		System.out.println(result);
 	}
-	
-	//Create a stream pipeline to find all transactions from year 2011 
+
+	//Create a stream pipeline to find all transactions from year 2011
 	//and sort them by value (small to high), and print to console
 	//(Note: there is an instance variable "value" in Transaction)
 	public static void prob2() {
-		//use this list	
+		//use this list
 		List<Transaction> list = TraderTransactTestData.getTransactions();
 		List<Transaction> result = list.stream()
 									.filter(t -> t.getYear() >= 2011)
@@ -61,20 +61,22 @@ public class Main {
 //		System.out.println(result);
 		result.stream().forEach(System.out::println);
 	}
-	
-	// Create a stream pipeline to find all traders from Cambridge, 
+
+	// Create a stream pipeline to find all traders from Cambridge,
 	// sort them by name, and print to console
 	public static void prob3() {
 		//Use this list
 		List<Transaction> list = TraderTransactTestData.getTransactions();
 		List<Trader> result = list.stream()
 								.map(t -> t.getTrader())
+								.filter(t -> t.getCity().equals("Cambridge"))
+								.distinct()
 								.sorted(Comparator.comparing(Trader::getName))
 								.collect(Collectors.toList());
 //		System.out.println(result);
 		System.out.println("===");
 		result.stream().forEach(System.out::println);
-		
-	                
+
+
 	}
 }
